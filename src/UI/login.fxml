@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane fx:id="lgwin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="550.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controller">
+   <children>
+      <Button id="login" fx:id="lg" layoutX="144.0" layoutY="306.0" mnemonicParsing="false" onAction="#login_event" prefHeight="42.0" prefWidth="264.0" style="-fx-background-color: cornflowerblue;" text="登陆" textFill="WHITE" />
+      <PasswordField id="pwf" fx:id="pwf" layoutX="183.0" layoutY="223.0" prefHeight="30.0" prefWidth="221.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </PasswordField>
+      <TextField id="idf" fx:id="idf" layoutX="183.0" layoutY="171.0" prefHeight="34.0" prefWidth="221.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <ImageView id="id" fx:id="id" fitHeight="34.0" fitWidth="34.0" layoutX="144.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView id="pw" fx:id="pw" fitHeight="34.0" fitWidth="34.0" layoutX="144.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView id="bg" fx:id="bg" fitHeight="164.0" fitWidth="550.0" layoutX="1.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" />
+      <CheckBox fx:id="remp" layoutX="145.0" layoutY="269.0" mnemonicParsing="false" text="记住账号密码" textFill="GREY">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="autolg" layoutX="316.0" layoutY="269.0" mnemonicParsing="false" text="自动登录" textFill="GREY">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <Button fx:id="rg" layoutX="7.0" layoutY="333.0" mnemonicParsing="false" onAction="#re_event" style="-fx-background-color: while;" text="注册账号" textFill="GREY" />
+      <Label layoutX="206.0" layoutY="51.0" text="Login" textFill="WHITE">
+         <font>
+            <Font name="Microsoft YaHei UI Light" size="56.0" />
+         </font>
+      </Label>
+      <Label layoutX="209.0" layoutY="131.0" text="线上百货商店客户端" textFill="WHITE" />
+   </children>
+</AnchorPane>
