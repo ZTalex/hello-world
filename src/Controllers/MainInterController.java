@@ -5,6 +5,7 @@ import UI.Main;
 import UI.main_info;
 import UI.main_myorder;
 import UI.main_recharge;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -13,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
+import javafx.stage.Stage;
 
 import java.awt.event.MouseEvent;
 import java.io.FileOutputStream;
@@ -59,6 +61,25 @@ public class MainInterController {
     private Button recharge;//充值
     @FXML
     private Button infor;//个人信息
+    @FXML
+    private Button logout;//注销按钮
+    @FXML
+    void logout_event(ActionEvent event) {
+        Properties p = new Properties();
+        InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
+        try {
+            p.load(in);//
+            in.close();
+            p.setProperty("autologin", "false");
+            FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
+            p.store(out, "");//设置属性头，如不想设置，请把后面一个用""替换掉
+            out.flush();//清空缓存，写入磁盘
+            out.close();//关闭输出流
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Platform.exit();
+    }
     @FXML
     void infor_event(ActionEvent event) {
 

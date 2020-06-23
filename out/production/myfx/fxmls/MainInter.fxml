@@ -12,7 +12,7 @@
   <items>
     <AnchorPane id="caidan" minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="1332.0" style="-fx-background-color: white;" SplitPane.resizableWithParent="false">
          <children>
-            <Label fx:id="hellowords" layoutX="1122.0" layoutY="4.0" prefHeight="20.0" prefWidth="206.0" text="欢迎您：" />
+            <Label fx:id="hellowords" layoutX="1038.0" layoutY="4.0" prefHeight="20.0" prefWidth="206.0" text="欢迎您：" />
             <Button fx:id="infor" layoutX="-3.0" layoutY="-1.0" mnemonicParsing="false" onAction="#infor_event" prefHeight="30.0" prefWidth="88.0" style="-fx-background-color: white;" text="个人信息">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -25,6 +25,11 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
+            <Button fx:id="logout" layoutX="1244.0" layoutY="-1.0" mnemonicParsing="false" onAction="#logout_event" prefHeight="30.0" prefWidth="88.0" style="-fx-background-color: white;" text="注销">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children></AnchorPane>
     <AnchorPane id="xianshi" minHeight="0.0" minWidth="0.0" prefHeight="639.0" prefWidth="1332.0" SplitPane.resizableWithParent="false">
          <children>

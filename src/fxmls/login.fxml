@@ -11,7 +11,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane fx:id="lgwin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="550.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
+<AnchorPane id="win" fx:id="lgwin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="550.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
    <children>
       <Button id="login" fx:id="lg" layoutX="144.0" layoutY="306.0" mnemonicParsing="false" onAction="#login_event" prefHeight="42.0" prefWidth="264.0" style="-fx-background-color: cornflowerblue;" text="登陆" textFill="WHITE" />
       <PasswordField id="pwf" fx:id="pwf" layoutX="183.0" layoutY="223.0" prefHeight="30.0" prefWidth="221.0">

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="359.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MerinfoCon">
+   <children>
+      <Label layoutX="76.0" layoutY="28.0" text="Merchandise Info" textFill="CORNFLOWERBLUE">
+         <font>
+            <Font name="Microsoft YaHei Light" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="name" layoutX="92.0" layoutY="121.0" prefHeight="30.0" prefWidth="211.0" />
+      <TextField fx:id="price" layoutX="92.0" layoutY="155.0" prefHeight="30.0" prefWidth="211.0" />
+      <Label layoutX="23.0" layoutY="126.0" text="商品名称" textFill="GREY" />
+      <Label layoutX="23.0" layoutY="160.0" text="商品价格" textFill="GREY" />
+      <Label layoutX="23.0" layoutY="192.0" text="商品描述" textFill="GREY" />
+      <Button fx:id="commit" layoutX="91.0" layoutY="291.0" mnemonicParsing="false" onAction="#commit_event" prefHeight="43.0" prefWidth="173.0" style="-fx-background-color: cornflowerblue;" text="提交" textFill="WHITE" />
+      <TextArea fx:id="des" layoutX="91.0" layoutY="192.0" prefHeight="80.0" prefWidth="211.0" />
+      <Label layoutX="23.0" layoutY="93.0" text="商品ID" textFill="GREY" />
+      <TextField fx:id="ID" editable="false" layoutX="92.0" layoutY="88.0" prefHeight="30.0" prefWidth="211.0" />
+   </children>
+</AnchorPane>

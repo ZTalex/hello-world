@@ -61,8 +61,8 @@ public class Main_myordcont {
     public void initialize(){
         //初始化订单列表示例
         ObservableList<Order> data = FXCollections.observableArrayList(
-                new Order("8888","10086","520",1),
-                new Order("8866","10016","321",0)
+                new Order("8888","10086","520",1,"说明"),
+                new Order("8866","10016","321",0,"说明")
         );
         merName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().ID));
         orID.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().ID));

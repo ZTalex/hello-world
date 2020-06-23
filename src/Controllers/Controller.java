@@ -3,10 +3,14 @@ package Controllers;
 import UI.Main;
 import UI.MainInterface;
 import UI.Regist;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
@@ -14,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.*;
 import java.util.Properties;
@@ -46,86 +51,38 @@ public class Controller {
     void login_event(ActionEvent event) {//登陆点击监听
         String username =idf.getText();//接收用户名
         String password=pwf.getText();//接收密码
+        try {
+            Properties p = new Properties();
+            InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
+            FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
+            p.load(in);//
+            in.close();
+            if (autolg.isSelected()) {
+                    p.setProperty("autologin", "true");
 
-        if(autolg.isSelected()){
-            Properties p = new Properties();
-            InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
-            try {
-                p.load(in);//
-                in.close();
-                p.setProperty("autologin", "true");
-                FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
-                p.store(out, "test");//设置属性头，如不想设置，请把后面一个用""替换掉
-                out.flush();//清空缓存，写入磁盘
-                out.close();//关闭输出流
-            } catch (Exception e) {
-                e.printStackTrace();
+            } else {
+                    p.setProperty("autologin", "false");
             }
-        }
-        else {
-            Properties p = new Properties();
-            InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
-            try {
-                p.load(in);//
-                in.close();
-                p.setProperty("autologin", "false");
-                FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
-                p.store(out, "test");//设置属性头，如不想设置，请把后面一个用""替换掉
-                out.flush();//清空缓存，写入磁盘
-                out.close();//关闭输出流
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
 
-        if(remp.isSelected()) {//记住账号密码被选中
-            Properties p = new Properties();
-            InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
-            try {
-                p.load(in);//
-                in.close();
-                p.setProperty("savenp", "true");
-                p.setProperty("savedusername",username);
-                p.setProperty("savedpassword",password);
-                FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
-                p.store(out, "111");//设置属性头，如不想设置，请把后面一个用""替换掉
-                out.flush();//清空缓存，写入磁盘
-                out.close();//关闭输出流
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (remp.isSelected()) {//记住账号密码被选中
+                    p.setProperty("savenp", "true");
+                    p.setProperty("savedusername", username);
+                    p.setProperty("savedpassword", password);
+
+            } else {
+                    p.setProperty("savedusername", "");//设置属性值，如不属性不存在新建
+                    p.setProperty("savedpassword", "");
+                    p.setProperty("savenp", "false");
             }
+            p.store(out, "");//设置属性头，如不想设置，请把后面一个用""替换掉
+            out.flush();//清空缓存，写入磁盘
+            out.close();//关闭输出流
         }
-        else{
-            Properties p = new Properties();
-            InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
-            try {
-                p.load(in);//
-                in.close();
-                p.setProperty("savedusername", "");//设置属性值，如不属性不存在新建
-                p.setProperty("savedpassword", "");
-                p.setProperty("savenp", "false");
-                FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
-                p.store(out, "");//设置属性头，如不想设置，请把后面一个用""替换掉
-                out.flush();//清空缓存，写入磁盘
-                out.close();//关闭输出流
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        catch (Exception e){
+            System.out.println();
         }
         Main.username=username;
-//        Properties p = new Properties();
-//        InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
-//        try {
-//            p.load(in);//
-//            in.close();
-//            p.setProperty("username", username);//设置属性值，如不属性不存在新建
-//            FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
-//            p.store(out, "");//设置属性头，如不想设置，请把后面一个用""替换掉
-//            out.flush();//清空缓存，写入磁盘
-//            out.close();//关闭输出流
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+
         //此处编辑登陆逻辑
 
 
@@ -138,10 +95,17 @@ public class Controller {
 //        alert.setContentText("hello");
 //        alert.show();
 
-        Stage stage = (Stage) lgwin.getScene().getWindow();//获得stage
-        stage.close();//关闭窗口
+
+        try{
+            Stage stage = (Stage) lgwin.getScene().getWindow();
+            stage.hide();
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
         MainInterface mi =new MainInterface();
+
     }
+
 
     @FXML
     void re_event(ActionEvent event) {
@@ -149,6 +113,7 @@ public class Controller {
     }
     @FXML
     public void initialize(){
+
         //初始化图片信息
         bg.setImage(new Image("resource/lg_bg.png"));
         bg.setPreserveRatio(false);
@@ -178,9 +143,10 @@ public class Controller {
         }
         if (props.getProperty("autologin").equals("true")){
             autolg.setSelected(true);
-            this.login_event(new ActionEvent());
+            login_event(new ActionEvent());
         }
 
     }
+
 
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="665.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ShopCont">
+   <children>
+      <TabPane layoutY="-8.0" prefHeight="666.0" prefWidth="1035.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="商品列表">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="161.0" prefWidth="567.0">
+                     <children>
+                        <TableView fx:id="pt" prefHeight="555.0" prefWidth="1035.0">
+                          <columns>
+                              <TableColumn fx:id="pcheck" minWidth="0.0" prefWidth="25.0" />
+                              <TableColumn fx:id="pid" minWidth="0.0" prefWidth="187.0" text="商品编号" />
+                              <TableColumn fx:id="pname" minWidth="0.0" prefWidth="169.0" text="商品名称" />
+                              <TableColumn fx:id="pdes" minWidth="0.0" prefWidth="407.0" text="商品介绍" />
+                              <TableColumn fx:id="pprice" minWidth="0.0" prefWidth="123.0" text="商品价格" />
+                              <TableColumn fx:id="psell" minWidth="0.0" prefWidth="121.0" text="商品销量" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="flush" layoutX="14.0" layoutY="562.0" mnemonicParsing="false" onAction="#flush_event" prefHeight="30.0" prefWidth="80.0" text="刷新" />
+                        <Button fx:id="upnew" layoutX="894.0" layoutY="562.0" mnemonicParsing="false" onAction="#upnew_event" prefHeight="60.0" prefWidth="127.0" text="上架新商品" />
+                        <Button fx:id="down" layoutX="628.0" layoutY="562.0" mnemonicParsing="false" onAction="#down_event" prefHeight="60.0" prefWidth="127.0" text="下架选中商品" />
+                        <Button fx:id="changeproduct" layoutX="761.0" layoutY="562.0" mnemonicParsing="false" onAction="#chanpro_event" prefHeight="60.0" prefWidth="127.0" text="修改商品信息" />
+                        <Label layoutX="17.0" layoutY="600.0" text="选中以操作" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="全部订单">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="ot" prefHeight="557.0" prefWidth="1035.0">
+                           <columns>
+                              <TableColumn fx:id="ocheck" minWidth="0.0" prefWidth="25.0" />
+                              <TableColumn fx:id="oid" minWidth="0.0" prefWidth="197.0" text="订单编号" />
+                              <TableColumn fx:id="obid" minWidth="0.0" prefWidth="202.0" text="买家ID" />
+                              <TableColumn fx:id="opid" minWidth="0.0" prefWidth="206.0" text="商品ID" />
+                              <TableColumn fx:id="os" minWidth="0.0" prefWidth="84.0" text="订单状态" />
+                              <TableColumn fx:id="od" minWidth="0.0" prefWidth="318.0" text="订单说明" />
+                           </columns>
+                        </TableView>
+                        <TextField layoutX="130.0" layoutY="566.0" prefHeight="50.0" prefWidth="245.0" />
+                        <Button fx:id="search" layoutX="379.0" layoutY="566.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="69.0" text="搜索" />
+                        <Button fx:id="recover" layoutX="11.0" layoutY="559.0" mnemonicParsing="false" onAction="#rec_event" prefHeight="30.0" prefWidth="110.0" text="恢复" />
+                        <ChoiceBox fx:id="searchselect" layoutX="12.0" layoutY="592.0" prefHeight="30.0" prefWidth="110.0" />
+                        <ChoiceBox fx:id="setstats" layoutX="835.0" layoutY="567.0" prefHeight="50.0" prefWidth="92.0" />
+                        <Button fx:id="confirm" layoutX="936.0" layoutY="567.0" mnemonicParsing="false" onAction="#confirm_event" prefHeight="50.0" prefWidth="85.0" text="确定" />
+                        <Label layoutX="669.0" layoutY="570.0" text="将所选订单状态设置为" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
