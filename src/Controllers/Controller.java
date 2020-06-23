@@ -1,5 +1,8 @@
-package UI;
+package Controllers;
 
+import UI.Main;
+import UI.MainInterface;
+import UI.Regist;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,10 +13,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
-import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import java.io.*;
 import java.util.Properties;
 
@@ -45,17 +46,49 @@ public class Controller {
     void login_event(ActionEvent event) {//登陆点击监听
         String username =idf.getText();//接收用户名
         String password=pwf.getText();//接收密码
+
+        if(autolg.isSelected()){
+            Properties p = new Properties();
+            InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
+            try {
+                p.load(in);//
+                in.close();
+                p.setProperty("autologin", "true");
+                FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
+                p.store(out, "test");//设置属性头，如不想设置，请把后面一个用""替换掉
+                out.flush();//清空缓存，写入磁盘
+                out.close();//关闭输出流
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            Properties p = new Properties();
+            InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
+            try {
+                p.load(in);//
+                in.close();
+                p.setProperty("autologin", "false");
+                FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
+                p.store(out, "test");//设置属性头，如不想设置，请把后面一个用""替换掉
+                out.flush();//清空缓存，写入磁盘
+                out.close();//关闭输出流
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         if(remp.isSelected()) {//记住账号密码被选中
             Properties p = new Properties();
             InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
             try {
                 p.load(in);//
                 in.close();
-                p.setProperty("savedusername", username);//设置属性值，如不属性不存在新建
-                p.setProperty("savedpassword", password);
                 p.setProperty("savenp", "true");
+                p.setProperty("savedusername",username);
+                p.setProperty("savedpassword",password);
                 FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
-                p.store(out, "");//设置属性头，如不想设置，请把后面一个用""替换掉
+                p.store(out, "111");//设置属性头，如不想设置，请把后面一个用""替换掉
                 out.flush();//清空缓存，写入磁盘
                 out.close();//关闭输出流
             } catch (Exception e) {
@@ -79,36 +112,20 @@ public class Controller {
                 e.printStackTrace();
             }
         }
-        if(autolg.isSelected()){
-            Properties p = new Properties();
-            InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
-            try {
-                p.load(in);//
-                in.close();
-                p.setProperty("autologin", "true");
-                FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
-                p.store(out, "");//设置属性头，如不想设置，请把后面一个用""替换掉
-                out.flush();//清空缓存，写入磁盘
-                out.close();//关闭输出流
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        else {
-            Properties p = new Properties();
-            InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
-            try {
-                p.load(in);//
-                in.close();
-                p.setProperty("autologin", "false");
-                FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
-                p.store(out, "");//设置属性头，如不想设置，请把后面一个用""替换掉
-                out.flush();//清空缓存，写入磁盘
-                out.close();//关闭输出流
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        Main.username=username;
+//        Properties p = new Properties();
+//        InputStream in = Controller.class.getClassLoader().getResourceAsStream("resource/keyvalue");
+//        try {
+//            p.load(in);//
+//            in.close();
+//            p.setProperty("username", username);//设置属性值，如不属性不存在新建
+//            FileOutputStream out = new FileOutputStream("src\\resource\\keyvalue");//输出流
+//            p.store(out, "");//设置属性头，如不想设置，请把后面一个用""替换掉
+//            out.flush();//清空缓存，写入磁盘
+//            out.close();//关闭输出流
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         //此处编辑登陆逻辑
 
 
@@ -117,10 +134,13 @@ public class Controller {
 
 
 
-        Alert alert =new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("hello");
-        alert.show();
-        Platform.exit();
+//        Alert alert =new Alert(Alert.AlertType.INFORMATION);
+//        alert.setContentText("hello");
+//        alert.show();
+
+        Stage stage = (Stage) lgwin.getScene().getWindow();//获得stage
+        stage.close();//关闭窗口
+        MainInterface mi =new MainInterface();
     }
 
     @FXML

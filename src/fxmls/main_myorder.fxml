@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="416.0" prefWidth="607.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Main_myordcont">
+   <children>
+      <TableView fx:id="ordlist" prefHeight="370.0" prefWidth="607.0">
+        <columns>
+          <TableColumn fx:id="check" prefWidth="32.0" sortable="false" />
+          <TableColumn fx:id="orID" editable="false" prefWidth="118.0" sortable="false" text="订单号" />
+            <TableColumn fx:id="merID" editable="false" prefWidth="132.0" sortable="false" text="商品ID" />
+            <TableColumn fx:id="merName" editable="false" prefWidth="230.0" text="商品名称" />
+            <TableColumn fx:id="state" editable="false" prefWidth="94.0" text="订单状态" />
+        </columns>
+      </TableView>
+      <Button fx:id="flush" layoutX="14.0" layoutY="378.0" mnemonicParsing="false" onAction="#flush_event" text="刷新" />
+      <Button fx:id="canc" layoutX="513.0" layoutY="378.0" mnemonicParsing="false" onAction="#canc_event" text="取消订单" />
+      <Button fx:id="ret" layoutX="421.0" layoutY="378.0" mnemonicParsing="false" onAction="#ret_event" text="申请退货" />
+      <Label layoutX="71.0" layoutY="383.0" text="选中订单执行操作" />
+   </children>
+</AnchorPane>

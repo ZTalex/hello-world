@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.04161073825503356" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="747.0" prefWidth="1334.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainInterController">
+  <items>
+    <AnchorPane id="caidan" minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="1332.0" style="-fx-background-color: white;" SplitPane.resizableWithParent="false">
+         <children>
+            <Label fx:id="hellowords" layoutX="1122.0" layoutY="4.0" prefHeight="20.0" prefWidth="206.0" text="欢迎您：" />
+            <Button fx:id="infor" layoutX="-3.0" layoutY="-1.0" mnemonicParsing="false" onAction="#infor_event" prefHeight="30.0" prefWidth="88.0" style="-fx-background-color: white;" text="个人信息">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="myorder" layoutX="85.0" layoutY="-1.0" mnemonicParsing="false" onAction="#myorder_event" prefHeight="30.0" prefWidth="88.0" style="-fx-background-color: white;" text="我的订单">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="recharge" layoutX="173.0" layoutY="-1.0" mnemonicParsing="false" onAction="#recharge_event" prefHeight="30.0" prefWidth="88.0" style="-fx-background-color: white;" text="充值">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children></AnchorPane>
+    <AnchorPane id="xianshi" minHeight="0.0" minWidth="0.0" prefHeight="639.0" prefWidth="1332.0" SplitPane.resizableWithParent="false">
+         <children>
+            <SplitPane dividerPositions="0.21096096096096095" layoutX="-2.0" layoutY="-1.0" prefHeight="682.0" prefWidth="1334.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="680.0" prefWidth="303.0" SplitPane.resizableWithParent="false">
+                     <children>
+                        <SplitPane dividerPositions="0.3230088495575221" orientation="VERTICAL" prefHeight="680.0" prefWidth="277.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="226.0" prefWidth="275.0" style="-fx-background-color: white;" SplitPane.resizableWithParent="false">
+                                 <children>
+                                    <Label layoutX="7.0" layoutY="4.0" prefHeight="20.0" prefWidth="88.0" text="商品搜索">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Line endX="150.0" layoutX="108.0" layoutY="29.0" opacity="0.33" startX="-100.0" />
+                                    <TextField fx:id="keyword" layoutX="87.0" layoutY="63.0" prefHeight="30.0" prefWidth="171.0" />
+                                    <TextField fx:id="minp" layoutX="87.0" layoutY="119.0" prefHeight="30.0" prefWidth="64.0" promptText="min" />
+                                    <TextField fx:id="maxp" layoutX="194.0" layoutY="119.0" prefHeight="30.0" prefWidth="64.0" promptText="max" />
+                                    <Label layoutX="22.0" layoutY="68.0" prefHeight="20.0" prefWidth="64.0" text="关键字：" />
+                                    <Label layoutX="15.0" layoutY="124.0" prefHeight="20.0" prefWidth="79.0" text="价格区间：" />
+                                    <Label layoutX="167.0" layoutY="122.0" prefHeight="20.0" prefWidth="22.0" text="~">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="search" layoutX="85.0" layoutY="163.0" mnemonicParsing="false" onAction="#serach_event" prefHeight="30.0" prefWidth="79.0" text="搜索">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                    <Button fx:id="clear" layoutX="179.0" layoutY="163.0" mnemonicParsing="false" onAction="#clear_event" prefHeight="30.0" prefWidth="79.0" text="清空">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="358.0" prefWidth="275.0" SplitPane.resizableWithParent="false">
+                                 <children>
+                                    <Label layoutX="6.0" layoutY="2.0" prefHeight="25.0" prefWidth="98.0" text="热销排行榜">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Line endX="150.0" layoutX="108.0" layoutY="29.0" opacity="0.33" startX="-100.0" />
+                                    <TableView fx:id="hotlist" layoutY="34.0" prefHeight="421.0" prefWidth="275.0">
+                                      <columns>
+                                        <TableColumn editable="false" prefWidth="120.0" text="商品名称" />
+                                        <TableColumn editable="false" prefWidth="76.0" text="价格" />
+                                          <TableColumn editable="false" prefWidth="60.0" text="销量" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="931.0" SplitPane.resizableWithParent="false">
+                     <children>
+                        <TableView fx:id="mainlist" layoutX="-4.0" layoutY="-2.0" prefHeight="626.0" prefWidth="1053.0">
+                          <columns>
+                              <TableColumn fx:id="check" editable="false" prefWidth="38.0" resizable="false" />
+                            <TableColumn fx:id="name" editable="false" minWidth="0.0" prefWidth="221.0" resizable="false" text="商品名称" />
+                            <TableColumn fx:id="dex" editable="false" minWidth="0.0" prefWidth="556.0" resizable="false" text="商品描述" />
+                              <TableColumn fx:id="id" editable="false" minWidth="0.0" prefWidth="132.0" resizable="false" text="商品编号" />
+                              <TableColumn fx:id="price" editable="false" minWidth="0.0" prefWidth="104.0" resizable="false" text="商品价格" />
+                          </columns>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                        </TableView>
+                        <Button fx:id="buy" layoutX="891.0" layoutY="626.0" mnemonicParsing="false" onAction="#buy_envent" prefHeight="52.0" prefWidth="154.0" text="购买">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="flash" layoutY="626.0" mnemonicParsing="false" onAction="#flush_event" prefHeight="25.0" prefWidth="98.0" text="刷新">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Label layoutX="105.0" layoutY="631.0" prefHeight="20.0" prefWidth="364.0" text="选中商品后点击购买即可提交订单" />
+                     </children></AnchorPane>
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

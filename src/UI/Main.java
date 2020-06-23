@@ -8,9 +8,10 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    public static String username;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmls/login.fxml"));
         primaryStage.setTitle("登陆");
         primaryStage.setScene(new Scene(root, 550, 370));
         primaryStage.show();

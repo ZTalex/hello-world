@@ -7,12 +7,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="391.0" prefWidth="462.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.RegController">
+<AnchorPane prefHeight="391.0" prefWidth="462.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegController">
    <children>
-      <TextField layoutX="143.0" layoutY="103.0" />
-      <TextField layoutX="143.0" layoutY="156.0" />
-      <PasswordField layoutX="143.0" layoutY="207.0" />
-      <PasswordField layoutX="143.0" layoutY="256.0" />
+      <TextField fx:id="nc" layoutX="143.0" layoutY="103.0" />
+      <TextField fx:id="id" layoutX="143.0" layoutY="156.0" />
+      <PasswordField fx:id="pw" layoutX="143.0" layoutY="207.0" />
+      <PasswordField fx:id="ipw" layoutX="143.0" layoutY="256.0" />
       <Label layoutX="88.0" layoutY="108.0" text="昵称" textFill="GREY" />
       <Label layoutX="88.0" layoutY="161.0" text="账号" textFill="GREY" />
       <Label layoutX="88.0" layoutY="212.0" text="密码" textFill="GREY" />
@@ -20,7 +20,7 @@
       <Label layoutX="354.0" layoutY="108.0" text="*" />
       <Label layoutX="354.0" layoutY="161.0" text="*" />
       <Label layoutX="354.0" layoutY="212.0" text="*" />
-      <Button layoutX="112.0" layoutY="316.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="239.0" style="-fx-background-color: cornflowerblue;" text="注册" textFill="#fffbfb" />
+      <Button fx:id="reg" layoutX="112.0" layoutY="316.0" mnemonicParsing="false" onAction="#regist_event" prefHeight="40.0" prefWidth="239.0" style="-fx-background-color: cornflowerblue;" text="注册" textFill="#fffbfb" />
       <Label layoutX="183.0" layoutY="36.0" text="Regist" textFill="CORNFLOWERBLUE">
          <font>
             <Font name="Microsoft YaHei Light" size="36.0" />

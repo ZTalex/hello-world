@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="230.0" prefWidth="323.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Main_recharge">
+   <children>
+      <TextField fx:id="id" layoutX="95.0" layoutY="94.0" />
+      <Label layoutX="31.0" layoutY="99.0" text="充值ID" />
+      <TextField fx:id="money" layoutX="94.0" layoutY="165.0" prefHeight="30.0" prefWidth="102.0" />
+      <Label layoutX="24.0" layoutY="170.0" text="充值金额" />
+      <Button fx:id="confirm" layoutX="228.0" layoutY="165.0" mnemonicParsing="false" onAction="#confirm_event" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #6495ed;" text="确定" textFill="WHITE" />
+      <Label layoutX="104.0" layoutY="31.0" text="Recharge" textFill="CORNFLOWERBLUE">
+         <font>
+            <Font name="Microsoft YaHei Light" size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

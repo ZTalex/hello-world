@@ -6,13 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Regist extends Application {
+import java.io.IOException;
+
+public class MainInterface extends Application {
 
     public static void main(String[] args) {
         launch(args);
     }
 
-    public Regist() {
+    public MainInterface() {
         Stage stage = new Stage();
         try {
             start(stage);
@@ -22,12 +24,11 @@ public class Regist extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxmls/regist.fxml"));
-        primaryStage.setTitle("注册");
-        primaryStage.setScene(new Scene(root, 462, 391));
+    public void start(Stage primaryStage) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmls/MainInter.fxml"));
+        primaryStage.setTitle("主界面");
+        primaryStage.setScene(new Scene(root, 1334, 747));
         primaryStage.show();
     }
-
-
 }
