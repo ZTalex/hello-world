@@ -5,15 +5,21 @@ import Datatype.Order;
 import UI.MerInfor;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.util.Callback;
 
 import javax.print.DocFlavor;
 
 public class ShopCont {
+
+    @FXML
+    private TextField err;
 
     @FXML
     private Button upnew;//上架
@@ -81,35 +87,104 @@ public class ShopCont {
     @FXML
     private TableColumn<Order, String> obid;//订单买家ID
     @FXML
-    void flush_event(ActionEvent event) {
+    void flush_event(ActionEvent event) {    //刷新
         System.out.println("flush");
+        //从数据库中获取最新的信息，先将之前的信息全部删除，在将当前的数据显示出来
+        ObservableList<Merchandise> pdata1 = FXCollections.observableArrayList(
+                new Merchandise("手机","233","上网",200)
+        );
+        pt.getItems().clear();
+        pt.setItems(pdata1);
     }
 
     @FXML
-    void upnew_event(ActionEvent event) {
+    void upnew_event(ActionEvent event) {    //更新
         //商品更新和上架新商品都可以在一个界面完成
         MerInfor mi =new MerInfor();
         System.out.println("up_new");
     }
 
     @FXML
-    void down_event(ActionEvent event) {
+    void down_event(ActionEvent event) {     //下架
+        ObservableList<Merchandise> list=pt.getItems();
+        for(Merchandise o:list)
+        {
+            if(o.cb.isSelected())
+            {
+                System.out.println(o.ID);
+                //选中行的ID，在数据库中将其删除，然后刷新。
+                ObservableList<Merchandise> pdata2 = FXCollections.observableArrayList(
+                        new Merchandise("手机","233","上网",200)
+                );
+
+            }
+        }
+
+        ObservableList<Merchandise> pdata1 = FXCollections.observableArrayList(
+                new Merchandise("手机","233","上网",200)
+        );
+        pt.getItems().clear();
+        pt.setItems(pdata1);
+
+
         System.out.println("dowm");
     }
 
     @FXML
-    void chanpro_event(ActionEvent event) {
+    void chanpro_event(ActionEvent event) {  //修改信息
         MerInfor mi =new MerInfor();
         System.out.println("change");
     }
 
     @FXML
-    void rec_event(ActionEvent event) {
+    void rec_event(ActionEvent event) {      //恢复
+        err.setText("");
+        //从数据库中获取信息，更新订单信息
+        ObservableList<Order> odata1 = FXCollections.observableArrayList(
+                new Order("8823","10023","230",1,"说明"),
+                new Order("8222","10344","234",0,"我我")
+
+        );
+        ot.getItems().clear();
+        ot.setItems(odata1);
         System.out.println("rec");
     }
 
     @FXML
+    void search_event(ActionEvent event) {
+        String database;
+        database=err.getText();
+        System.out.println(searchselect.getValue());
+        //根据数据库语句找出数据库中相匹配的，下面表示查找的依据
+        //从数据库中找出后，输出
+        ObservableList<Order> odata1 = FXCollections.observableArrayList(
+                new Order("8823","10023","230",1,"说明"),
+                new Order("8222","10344","234",0,"我我")
+
+        );
+        ot.getItems().clear();
+        ot.setItems(odata1);
+    }
+    @FXML
     void confirm_event(ActionEvent event) {
+        //setstats为订单状态，根据订单号和结果，修改数据库中的结果，再更新
+        ObservableList<Order> list=ot.getItems();
+        for(Order o:list)
+        {
+            if(o.cb.isSelected())
+            {
+                System.out.println(o.ID);
+                System.out.println(setstats.getValue());
+
+            }
+        }
+        ObservableList<Order> odata1 = FXCollections.observableArrayList(
+                new Order("8823","10023","230",1,"说明"),
+                new Order("8222","10344","234",0,"我我")
+
+        );
+        ot.getItems().clear();
+        ot.setItems(odata1);
         System.out.println("confirm");
     }
     @FXML
@@ -135,7 +210,9 @@ public class ShopCont {
 
         //初始化商品列表
         ObservableList<Merchandise> pdata = FXCollections.observableArrayList(
-                new Merchandise("牙刷","10086","可以用来刷牙",100)
+                new Merchandise("牙刷","10086","可以用来刷牙",100),
+                new Merchandise("手机","222","上网",200),
+                new Merchandise("电视","133","看电视",3000)
         );
         pname.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().name));
         pid.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().ID));

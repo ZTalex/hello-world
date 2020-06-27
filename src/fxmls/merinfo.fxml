@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="359.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MerinfoCon">
+<AnchorPane fx:id="abc" prefHeight="359.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MerinfoCon">
    <children>
       <Label layoutX="76.0" layoutY="28.0" text="Merchandise Info" textFill="CORNFLOWERBLUE">
          <font>
